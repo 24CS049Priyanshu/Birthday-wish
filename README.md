@@ -12,6 +12,7 @@
             background-color: #fce4ec;
             overflow: hidden;
             position: relative;
+            z-index: 0;
         }
         .background-text {
             position: absolute;
@@ -34,6 +35,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+            z-index: 1;
         }
         .visible {
             opacity: 1;
@@ -69,6 +71,24 @@
         .message-box {
             animation: fadeIn 1s ease-in-out;
         }
+        .emoji {
+            position: absolute;
+            font-size: 40px;
+            opacity: 1;
+            animation: floatUp 2s forwards;
+            pointer-events: none;
+            z-index: 2;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -83,7 +103,7 @@
     <div class="container hidden" id="message">
         <h2>🎉 Happy Birthday Bestie! 🎂🎈</h2>
         <p id="message-content" class="message-box">Hey Miss Busy,</p>
-        <button class="btn btn-next" onclick="nextMessage()">Next</button>
+        <button class="btn btn-next" onclick="nextMessage(event)">Next</button>
     </div>
 
     <script>
@@ -97,22 +117,22 @@
             "Stay awesome! 😊🎂🎈"
         ];
         let index = 0;
-        
+
         function sayHello() {
             document.getElementById("greeting").style.display = "none";
             let messageDiv = document.getElementById("message");
             messageDiv.classList.remove("hidden");
             setTimeout(() => messageDiv.classList.add("visible"), 100);
         }
-        
+
         function notInterested() {
             let response = confirm("Please talk to me! 🙁");
             if (response) {
                 location.reload();
             }
         }
-        
-        function nextMessage() {
+
+        function nextMessage(event) {
             if (index < messages.length) {
                 let messageContent = document.getElementById("message-content");
                 messageContent.innerText = messages[index];
@@ -120,9 +140,25 @@
                 void messageContent.offsetWidth;
                 messageContent.classList.add("message-box");
                 index++;
+                generateEmojis(event.clientX, event.clientY);
             } else {
                 alert("That's all! Taking you back to the start.");
                 location.reload();
+            }
+        }
+
+        function generateEmojis(x, y) {
+            const emojiList = ["🎂", "🎈", "🎉", "🥳", "🍰", "🍫"];
+            for (let i = 0; i < 15; i++) {
+                const emoji = document.createElement("div");
+                emoji.classList.add("emoji");
+                emoji.innerText = emojiList[Math.floor(Math.random() * emojiList.length)];
+                document.body.appendChild(emoji);
+
+                emoji.style.left = `${x + (Math.random() * 200 - 100)}px`;
+                emoji.style.top = `${y + (Math.random() * 100 - 50)}px`;
+
+                emoji.addEventListener("animationend", () => emoji.remove());
             }
         }
     </script>
