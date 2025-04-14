@@ -1,14 +1,14 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Badi Behena</title>
+  <title>Happy Birthday Bhai!</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      background-color: #fce4ec;
+      background-color: #e0f7fa;
       margin: 0;
       overflow: hidden;
       position: relative;
@@ -21,7 +21,7 @@
       transform: translate(-50%, -50%);
       font-size: 80px;
       font-weight: bold;
-      color: rgba(255, 182, 193, 0.1);
+      color: rgba(33, 150, 243, 0.1);
       z-index: 0;
       white-space: nowrap;
       pointer-events: none;
@@ -97,16 +97,16 @@
 </head>
 <body>
 
-  <div class="background-text">Badi Behena</div>
+  <div class="background-text">Happy Birthday Chhote Bhai!</div>
 
   <div class="container" id="greeting">
-    <h2>Hello!</h2>
-    <button class="btn btn-hello" onclick="startMessage()">Hello</button>
+    <h2>Hey there!</h2>
+    <button class="btn btn-hello" onclick="startMessage()">Say Hello</button>
     <button class="btn btn-no" onclick="notInterested()">Not Interested to Talk</button>
   </div>
 
   <div class="container" id="message" style="display: none;">
-    <h2>🎉 Happy Birthday Badi Behena! 🎂🎈</h2>
+    <h2>🎉 Happy Birthday Chhote Bhai! 🎂🎈</h2>
     <p id="message-content" class="message-box"></p>
     <button class="btn btn-next" onclick="nextMessage(this)">Next 🎈</button>
     <button class="btn btn-restart" onclick="restart(this)" style="display: none;">Back to Begin 🔁</button>
@@ -114,13 +114,13 @@
 
   <script>
     const messages = [
-      "Happy Birthday to my dearest Badi Behena (Miss Niyati) 💖",
-      "You’ve always been my guiding light, my protector, and my biggest supporter.",
-      "No matter what life threw at me, I knew I could face it because you were right behind me—strong, steady, and full of love.",
-      "Your strength inspires me, your kindness comforts me, and your presence means the world to me.",
-      "Thank you for being not just a sister, but a best friend and a second mom rolled into one.",
-      "May this year bring you all the happiness, peace, and success you so truly deserve.",
-      "Love you more than words can ever express. 💫<br><br>Happy Birthday, Badi Behena! 🎉🎂❤️"
+      "Happy Birthday to the coolest Chhote Bhai! 🧁🎉",
+      "From the day we met, you’ve been like the little brother I never knew I needed.",
+      "You bring so much fun, madness, and joy into life — like a walking meme machine 🤪.",
+      "Your goofy energy, loyal heart, and infinite chatter make every day brighter.",
+      "May you always stay happy, keep shining, and never lose that spark that makes you YOU.",
+      "Even when you're annoying (which is often 😆), I wouldn’t trade you for anything!",
+      "Loads of love, hugs, and crazy wishes your way. Happy Birthday, Bhai! 🎈🎂🫶"
     ];
 
     let index = 0;
@@ -162,14 +162,14 @@
     }
 
     function notInterested() {
-      const response = confirm("Please talk to me! 🙁");
+      const response = confirm("C'mon yaar, don’t ignore me! 🙃");
       if (response) {
         location.reload();
       }
     }
 
     function createBurst(btn) {
-      const emojis = ['🎂','🎈','✨','🎉','💖'];
+      const emojis = ['🎂','🎈','✨','🎉','🫶'];
       for (let i = 0; i < 5; i++) {
         const burst = document.createElement('span');
         burst.className = 'emoji-burst';
@@ -183,5 +183,6 @@
   </script>
 </body>
 </html>
+
 
 
